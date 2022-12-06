@@ -9,7 +9,7 @@ resource "aws_security_group" "acess-ssh" {
     to_port          = 22
     protocol         = "tcp"
     // colocar meu ip de saída. groups of addresses that share the same prefix and contain the same number of bits
-    cidr_blocks      = ["45.0.0.0/8"]
+    cidr_blocks      = var.cdirs_remote_access
   }
 
   tags = {
@@ -30,7 +30,7 @@ resource "aws_security_group" "access-ssh-eu-west-1" {
     to_port          = 22
     protocol         = "tcp"
     // colocar meu ip de saída. groups of addresses that share the same prefix and contain the same number of bits
-    cidr_blocks      = ["194.169.217.0/24"]
+    cidr_blocks      = var.cdirs_remote_access
   }
 
   tags = {

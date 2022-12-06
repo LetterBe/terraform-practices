@@ -15,7 +15,7 @@ resource "aws_instance" "dev" {
     count = 3
     //se é instance, preciso da ami, do tipo de instância, do nome da chave, do security group
     // imagem , sempre olhar a aim da região
-    ami = "ami-0caef02b518350c8b"
+    ami = var.amis["eu-central-1"]
     // tipo da instância, no caso free tier
     instance_type = "t2.micro" 
     // criar uma chave no ec2, na mesma regiao da instancia
@@ -30,9 +30,9 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "dev4" { 
-    ami = "ami-0caef02b518350c8b"
+    ami = var.amis["eu-central-1"]
     instance_type = "t2.micro" 
-    key_name = "terraform-aws"
+    key_name = var.key_name
     tags = {    
         Name = "dev4"
     }
@@ -45,7 +45,7 @@ resource "aws_instance" "dev4" {
 resource "aws_instance" "dev5" { 
     ami = var.amis["eu-central-1"]
     instance_type = "t2.micro" 
-    key_name = "terraform-aws"
+    key_name = var.key_name
     tags = {    
         Name = "dev5"
     }
@@ -57,7 +57,7 @@ resource "aws_instance" "dev6" {
     provider = "aws.eu-west-1"
     ami = var.amis["eu-west-1"]
     instance_type = "t2.micro" 
-    key_name = "terraform-aws"
+    key_name = var.key_name
     tags = {    
         Name = "dev6"
     }
